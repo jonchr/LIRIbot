@@ -1,0 +1,35 @@
+{
+  "name": "liribot_package",
+  "version": "1.0.0",
+  "description": "This is my LIRIbot's package",
+  "main": "index.js",
+  "scripts": {
+    "test": "Hello"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jonchr/LIRIbot.git"
+  },
+  "keywords": [
+    "Robot",
+    "LIRIbot",
+    "LIRI",
+    "Language",
+    "Interpretation",
+    "and",
+    "Recognition",
+    "Interface",
+    "GW",
+    "Coding",
+    "Bootcamp"
+  ],
+  "author": "Jon Christensen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jonchr/LIRIbot/issues"
+  },
+  "homepage": "https://github.com/jonchr/LIRIbot#readme",
+  "dependencies": {
+    "request": "^2.81.0"
+  }
+}

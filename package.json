@@ -30,6 +30,7 @@
   },
   "homepage": "https://github.com/jonchr/LIRIbot#readme",
   "dependencies": {
-    "request": "^2.81.0"
+    "request": "^2.81.0",
+    "require": "^2.4.20"
   }
 }

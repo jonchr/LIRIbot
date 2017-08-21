@@ -196,6 +196,52 @@ function execute(command, argument) {
 			break;
 
 		//===================================================
+
+		case "play-this-song": //Opens the spotify preview URL to play a short clip of the song
+
+			//links to  keys.js to provide the keys for spotify
+			var spotifyKeys = require("./keys.js").spotifyKeys;
+			
+			//pulls in the node spotify API to connect 
+			var Spotify = require("node-spotify-api");
+ 
+ 			//creates a new Spotify object with my API keys in the object
+			var spotify = new Spotify({
+				id: spotifyKeys["clientID"],
+				secret: spotifyKeys["clientSecret"]
+			});
+
+			//Song Title is equal to the passed argument; else, defaults to 'The Sign' by Ace of Base
+			var songTitle = "The Sign Ace";
+			if(argument != "") {
+				songTitle = argument;
+			}
+
+			//Searches for 1 track with the name in argument
+			spotify.search({ type: 'track', query: songTitle, limit: 1 }, function(err, data) {
+				if (err) {
+			    	return console.log('Error occurred: ' + err);
+			  	}
+
+			  	var URL = data.tracks["items"][0].preview_url;
+
+			  	//Uses OpenURL to open the preview URL from spotify
+			  	require("openurl").open(URL);
+			
+				//Creates a message to console log/file log
+			 	message = "Opening web page to play song preview"
+			 			+ "================================\n";
+
+				if(printToFile) {
+					print(message);
+				}
+				else {
+					console.log(message);
+				}
+			});
+			break;
+
+		//===================================================
 		
 		default: //default message if the command is not one of the above
 			var message = "I'm sorry, that's not one of my commands. Try 'my-tweets', 'spotify-this-song', 'movie-this', or 'do-what-it-says'.\n";

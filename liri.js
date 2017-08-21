@@ -35,7 +35,7 @@ function execute(command, argument) {
 
 		case "my-tweets":
 			//console logs my last 20 tweets and when they were created
-			var connect = require("./keys.js");
+			var twitter = require("./keys.js");
 			var keys = connect.twitterKeys;
 			console.log(command, "Will read you your tweets");
 			break;
@@ -45,7 +45,40 @@ function execute(command, argument) {
 		case "spotify-this-song":
 			//searches up the artist, song name, preview link, and album from spotify
 			//if no song is provided, defaults to the sign by ace of base
-			console.log("Spotify this: ", argument);
+			var spotifyKeys = require("./keys.js").spotifyKeys;
+		
+			var Spotify = require("node-spotify-api");
+ 
+			var spotify = new Spotify({
+				id: spotifyKeys["clientID"],
+				secret: spotifyKeys["clientSecret"]
+			});
+			
+			spotify.search({ type: 'track', query: argument, limit: 1 }, function(err, data) {
+				if (err) {
+			    	return console.log('Error occurred: ' + err);
+			  	}
+			
+			 	message = "Artist: " + data.tracks["items"][0].artists[0].name + "\n"
+			 			+ "Song: " + data.tracks["items"][0].name + "\n"
+			 			+ "Album: " + data.tracks["items"][0].album.name + "\n"
+			 			+ "Preview: " + data.tracks["items"][0].preview_url + "\n"
+			 			+ "================================" + "\n";
+
+				if(printToFile) {
+					print(message);
+				}
+				else {
+					console.log(message);
+				}
+			});
+			// spotify.request('https://api.spotify.com/v1/tracks/7yCPwWs66K8Ba5lFuU2bcx')
+			//   .then(function(data) {
+			//     console.log(data); 
+			//   })
+			//   .catch(function(err) {
+			//     console.error('Error occurred: ' + err); 
+			// });
 			break;
 
 		//===================================================

@@ -103,7 +103,7 @@ function execute(command, argument) {
 			    	return console.log('Error occurred: ' + err);
 			  	}
 			
-			 	message = "Artist: " + data.tracks["items"][0].artists[0].name + "\n"
+			 	var message = "Artist: " + data.tracks["items"][0].artists[0].name + "\n"
 			 			+ "Song: " + data.tracks["items"][0].name + "\n"
 			 			+ "Album: " + data.tracks["items"][0].album.name + "\n"
 			 			+ "Preview: " + data.tracks["items"][0].preview_url + "\n"
@@ -225,13 +225,22 @@ function execute(command, argument) {
 
 			  	var URL = data.tracks["items"][0].preview_url;
 
-			  	//Uses OpenURL to open the preview URL from spotify
-			  	require("openurl").open(URL);
-			
-				//Creates a message to console log/file log
-			 	message = "Opening web page to play song preview"
-			 			+ "================================\n";
+			  	var message;
 
+			  	if(URL !== null) {
+			  	
+				  	//Uses OpenURL to open the preview URL from spotify
+				  	require("openurl").open(URL);
+				
+					//Creates a message to console log/file log
+				 	message = "Opening web page to play preview of " + data.tracks["items"][0].name
+				 			+ "\n================================\n";
+
+	 			}
+	 			else {
+	 				message = "Preview not available for " + data.tracks["items"][0].name
+				 			+ "\n================================\n";
+	 			}
 				if(printToFile) {
 					print(message);
 				}

@@ -121,3 +121,5 @@ Jonchr_gw (Sun Aug 20 16:51): "A ham sandwich walks into a bar and orders a beer
 Jonchr_gw (Sun Aug 20 16:51): For the purposes of this assignment, here are some dad jokes
 Jonchr_gw (Sun Aug 20 16:50): This twitter account is made by Jon C for the GW Coding Bootcamp LIRIbot assignment
 ================================
+Opening web page to play preview of Billie Jean
+================================

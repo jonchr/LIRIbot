@@ -92,7 +92,7 @@ function execute(command, argument) {
 			});
 
 			//Song Title is equal to the passed argument; else, defaults to 'The Sign' by Ace of Base
-			var songTitle = "The Sign";
+			var songTitle = "The Sign Ace";
 			if(argument != "") {
 				songTitle = argument;
 			}

@@ -40,20 +40,46 @@ function execute(command, argument) {
 
 	switch (command) {
 
-		case "my-tweets":
-			//console logs my last 20 tweets and when they were created
-			var twitter = require("./keys.js");
-			var keys = connect.twitterKeys;
-			console.log(command, "Will read you your tweets");
+		case "my-tweets": //Returns the last 20 tweets from my account and when they were created
+	
+			//links to keys.js to provide the keys for twitter
+			var twitterKeys = require("./keys.js").twitterKeys;
+			
+			var Twitter = require('twitter');
+ 
+			var client = new Twitter({
+			  consumer_key: twitterKeys["consumer_key"],
+			  consumer_secret: twitterKeys["consumer_secret"],
+			  access_token_key: twitterKeys["access_token_key"],
+			  access_token_secret: twitterKeys["access_token_secret"]
+			});
+			 
+			var params = {screen_name: 'Jonchr_gw'};
+			client.get('statuses/user_timeline', params, function(error, tweets, response) {
+			  if (!error) {
+			  	var message = "";
+			  	//prints out the last twenty tweets for everyone to see!
+			  	for (var i = 0; i < 20; i++) {
+			  		message += tweets[i].user.screen_name + " (" 
+		  					+ tweets[i].created_at.substring(0, tweets[i].created_at.indexOf("+") - 4) + "): "
+		  					+ tweets[i].text + "\n";
+			  	} 
+			  	message += "================================\n";
+			  	if(printToFile) {
+			  		print(message);
+			  	}
+			  	else {
+			  		console.log(message);
+			  	}
+			  }
+			});
 			break;
 
 		//===================================================
 
 		case "spotify-this-song": //Uses spotify to provide information about a song
 			
-			//if no song is provided, defaults to the sign by ace of base
-			
-			//links to the keys.js to provide the keys for spotify
+			//links to  keys.js to provide the keys for spotify
 			var spotifyKeys = require("./keys.js").spotifyKeys;
 			
 			//pulls in the node spotify API to connect 
@@ -168,9 +194,11 @@ function execute(command, argument) {
 			});
 
 			break;
+
+		//===================================================
 		
 		default: //default message if the command is not one of the above
-			var message = "I'm sorry, that's not one of my commands. Try 'my-tweets', 'spotify-this-song', 'movie-this', or 'do-what-it-says'.";
+			var message = "I'm sorry, that's not one of my commands. Try 'my-tweets', 'spotify-this-song', 'movie-this', or 'do-what-it-says'.\n";
 			if(printToFile) {
 				print(message);
 			}

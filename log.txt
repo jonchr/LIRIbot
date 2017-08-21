@@ -95,3 +95,29 @@ Song: My Heart Will Go On - Love Theme from "Titanic"
 Album: Let's Talk About Love
 Preview: https://p.scdn.co/mp3-preview/5fcdcfe7ef20abd006bba666b4a7dff01dd5ec21?cid=bf2a268c4e7046ff8821620b4f093df5
 ================================
+Artist: Backstreet Boys
+Song: I Want It That Way
+Album: The Hits--Chapter One
+Preview: https://p.scdn.co/mp3-preview/e72a05dc3f69c891e3390c3ceaa77fad02f6b5f6?cid=bf2a268c4e7046ff8821620b4f093df5
+================================
+Jonchr_gw (Sun Aug 20 20:08): I've now reached 20 tweets so I will stop. This was very painful.
+Jonchr_gw (Sun Aug 20 20:05): "A termite walks into a bar and asks, 'is the bar tender here?'"
+Jonchr_gw (Sun Aug 20 20:04): "Why wouldn't the shrimp share his treasure? He was a little shellfish."
+Jonchr_gw (Sun Aug 20 20:03): "Why did the scientist install a knocker on his door? He wanted to win the Nobel price."
+Jonchr_gw (Sun Aug 20 20:02): Why was 6 mad when 7 won her a stuffed elephant? Because 7 1 1 4 9 2."
+Jonchr_gw (Sun Aug 20 20:00): "A cartoonist was found dead in his home. The details are sketchy."
+Jonchr_gw (Sun Aug 20 19:59): "I used to be a banker. I stopped after I lost interest."
+Jonchr_gw (Sun Aug 20 19:57): "What do you call a computer that sings? A dell."
+Jonchr_gw (Sun Aug 20 19:57): "Did you hear about these new reversible jackets? I can't wait to see how they turn out."
+Jonchr_gw (Sun Aug 20 19:56): "How do you give a sick bird? A tweetment."
+Jonchr_gw (Sun Aug 20 19:55): "What do you call a fat psychic? A four-chin teller."
+Jonchr_gw (Sun Aug 20 19:54): "The shovel was a ground-breaking invention."
+Jonchr_gw (Sun Aug 20 19:54): "Why couldn't the bicycle stand on its own? It was two-tired."
+Jonchr_gw (Sun Aug 20 19:53): "Where does a one-legged waitress work? IHOP."
+Jonchr_gw (Sun Aug 20 16:53): "A man who runs in front of bus gets tired. A man who runs behind a bus gets exhausted."
+Jonchr_gw (Sun Aug 20 16:52): "Two guys walk into a bar, the third one ducks."
+Jonchr_gw (Sun Aug 20 16:52): "Two peanuts were walking down the street. One was a salted."
+Jonchr_gw (Sun Aug 20 16:51): "A ham sandwich walks into a bar and orders a beer. Bartender says, 'Sorry we don't serve food here.'"
+Jonchr_gw (Sun Aug 20 16:51): For the purposes of this assignment, here are some dad jokes
+Jonchr_gw (Sun Aug 20 16:50): This twitter account is made by Jon C for the GW Coding Bootcamp LIRIbot assignment
+================================

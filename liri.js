@@ -1,13 +1,13 @@
-//Allows you to execute one of four functions in node via Terminals/Command Prompt
+//Allows you to execute one of four functions in node via Terminal/Command Prompt
 //node liri.js my-tweets will read my last tweets
 //node liri.js spotify-this-song <songname> will return information about the song
 //node liri.js movie-this <moviename> will return information about a movie
 //node liri.js do-what-it-says will take in a command from random.txt and execute it
 
-var fs, printToFile, arg, filename;
+var fs, printToFile, filename;
 
 //Writes to a file if the last process argument value is true, otherwise console logs it
-if(process.argv[process.argv.length - 1] === "true") {
+if(process.argv[process.argv.length - 1] === ".true") {
 	printToFile = true;
 	// Core node package for reading and writing files
 	fs = require("fs");
@@ -18,12 +18,19 @@ else {
 	printToFile = false;
 }
 
-//Stores the fourth process arguent value as arg as long as it isn't true/false/undefined
-if(process.argv[3] !== undefined && process.argv[3] !== "true" & process.argv[3] !== "false") {
-	arg = process.argv[3];
-}
-else {
-	arg = "";
+var arg = "";
+//Processes the 4th and beyond process arguments as necessary and stores in arg
+for (var i = 3; i < process.argv.length; i++) {
+	//If the last entry in the array, checks if it's .true, .false, or undefined before adding
+	if(i === process.argv.length - 1) {
+		if(process.argv[i] !== undefined && process.argv[i] !== ".true" & process.argv[i] !== ".false") {
+			arg += process.argv[i];	
+		}	
+	}
+	//Otherwise, just adds it to arg
+	else {
+		arg += process.argv[i] + " ";
+	}
 }
 
 //Directs the function on the third process argument value and passes it arg
@@ -42,19 +49,30 @@ function execute(command, argument) {
 
 		//===================================================
 
-		case "spotify-this-song":
-			//searches up the artist, song name, preview link, and album from spotify
+		case "spotify-this-song": //Uses spotify to provide information about a song
+			
 			//if no song is provided, defaults to the sign by ace of base
+			
+			//links to the keys.js to provide the keys for spotify
 			var spotifyKeys = require("./keys.js").spotifyKeys;
-		
+			
+			//pulls in the node spotify API to connect 
 			var Spotify = require("node-spotify-api");
  
+ 			//creates a new Spotify object with my API keys in the object
 			var spotify = new Spotify({
 				id: spotifyKeys["clientID"],
 				secret: spotifyKeys["clientSecret"]
 			});
-			
-			spotify.search({ type: 'track', query: argument, limit: 1 }, function(err, data) {
+
+			//Song Title is equal to the passed argument; else, defaults to 'The Sign' by Ace of Base
+			var songTitle = "The Sign";
+			if(argument != "") {
+				songTitle = argument;
+			}
+
+			//Searches for 1 track with the name in argument
+			spotify.search({ type: 'track', query: songTitle, limit: 1 }, function(err, data) {
 				if (err) {
 			    	return console.log('Error occurred: ' + err);
 			  	}
@@ -63,7 +81,7 @@ function execute(command, argument) {
 			 			+ "Song: " + data.tracks["items"][0].name + "\n"
 			 			+ "Album: " + data.tracks["items"][0].album.name + "\n"
 			 			+ "Preview: " + data.tracks["items"][0].preview_url + "\n"
-			 			+ "================================" + "\n";
+			 			+ "================================\n";
 
 				if(printToFile) {
 					print(message);
@@ -72,13 +90,6 @@ function execute(command, argument) {
 					console.log(message);
 				}
 			});
-			// spotify.request('https://api.spotify.com/v1/tracks/7yCPwWs66K8Ba5lFuU2bcx')
-			//   .then(function(data) {
-			//     console.log(data); 
-			//   })
-			//   .catch(function(err) {
-			//     console.error('Error occurred: ' + err); 
-			// });
 			break;
 
 		//===================================================
@@ -89,7 +100,7 @@ function execute(command, argument) {
 
 			//If no movie is entered, defaults to Mr. Nobody
 			var title = "Mr. Nobody";
-			if(argument !== "") {
+			if(arg !== "") {
 				title = argument;
 			}
 
@@ -111,7 +122,7 @@ function execute(command, argument) {
 		  						+ "Languages: " + parsed.Language + "\n"
 		  						+ "Plot: " + parsed.Plot + "\n"
 		  						+ "Actors: " + parsed.Actors + "\n"
-		  						+ "================================" + "\n";
+		  						+ "================================\n";
 
 	  				//Prints information to filename if printToFile is true; otherwise console logs
 	  				if(printToFile) {
@@ -157,7 +168,17 @@ function execute(command, argument) {
 			});
 
 			break;
-	}
+		
+		default: //default message if the command is not one of the above
+			var message = "I'm sorry, that's not one of my commands. Try 'my-tweets', 'spotify-this-song', 'movie-this', or 'do-what-it-says'.";
+			if(printToFile) {
+				print(message);
+			}
+			else {
+				console.log(message);
+			}
+			break;
+	}	
 }
 
 //Prints fileMessage in the filename
@@ -165,12 +186,12 @@ function print(fileMessage) {
 	//Appends the message to filename
 	fs.appendFile(filename, fileMessage, function(err) {
 
-	// If the code experiences any errors it will log the error to the console.
-	if (err) {
-		return console.log(err);
-	}
-	//Console logs that the info was printed to filename
-	console.log("Printed to", filename);
+		// If the code experiences any errors it will log the error to the console.
+		if (err) {
+			return console.log(err);
+		}
+		//Console logs that the info was printed to filename
+		console.log("Printed to", filename, "\n================================\n");
 
 	});
 }

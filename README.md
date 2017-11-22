@@ -15,7 +15,7 @@ By default, LIRIbot prints to the command line interface; however, it is possibl
 
 ### Development
 
-This application was developed as part of the GW Coding Bootcamp and was completed at the end of the fifth week.
+This application was developed as part of the GW Coding Bootcamp and was completed at the end of the fifth week. LIRIbot makes use of several native and non-native modules to Node. It uses process.argv, fs, and request, as well as local twitter and spotify files. It  makes use of the twitter and spotify modules to connect to their APIs. It also makes an API call to the OMDB database for movie information.
 
 ### Organization
 

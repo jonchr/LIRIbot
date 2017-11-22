@@ -15,7 +15,7 @@ By default, LIRIbot prints to the command line interface; however, it is possibl
 
 ### Development
 
-This application was developed as part of the GW Coding Bootcamp and was completed during the sixth week.
+This application was developed as part of the GW Coding Bootcamp and was completed at the end of the fifth week.
 
 ### Organization
 

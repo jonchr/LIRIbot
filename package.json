@@ -32,7 +32,7 @@
   "dependencies": {
     "node-spotify-api": "^1.0.7",
     "openurl": "^1.1.1",
-    "request": "^2.81.0",
+    "request": "^2.87.0",
     "require": "^2.4.20",
     "twitter": "^1.7.1"
   }
